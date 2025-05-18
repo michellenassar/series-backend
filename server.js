@@ -6,7 +6,7 @@ const { Pool } = require('pg');
 const app = express();
 app.use(cors());
 app.use(express.json());
-
+ 
 // Get DB connection string from .env
 const connectionString = process.env.DB_URL;
 
