@@ -19,10 +19,12 @@ const createTables = async () => {
   try {
     await pool.query(`
       CREATE TABLE IF NOT EXISTS shows (
-        ShowId SERIAL PRIMARY KEY,
-        Title VARCHAR(255) UNIQUE NOT NULL,
-        Genre VARCHAR(100),
-        Description TEXT
+      ShowId SERIAL PRIMARY KEY,
+      Title VARCHAR(255) UNIQUE NOT NULL,
+      Poster VARCHAR(500),
+      Genre VARCHAR(100),
+      Seasons INT,
+      Summary TEXT
       );
     `);
 
