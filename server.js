@@ -76,6 +76,29 @@ app.get("/shows", async (req, res) => {
   }
 });
 
+app.post('/addShows', async (req, res) => {
+  const { Title, Poster, Genre, Seasons, Summary } = req.body;
+
+  if (!Title) {
+    return res.status(400).json({ message: 'Title is required' });
+  }
+
+  try {
+    await pool.query(
+      `INSERT INTO shows (Title, Poster, Genre, Seasons, Summary) VALUES ($1, $2, $3, $4, $5)`,
+      [Title, Poster || null, Genre || null, Seasons || null, Summary || null]
+    );
+    res.status(201).json({ message: 'Show added successfully' });
+  } catch (err) {
+    // Handle duplicate title (unique constraint) or other errors
+    if (err.code === '23505') {
+      res.status(409).json({ message: 'A show with this title already exists' });
+    } else {
+      res.status(500).json({ message: 'Error adding show', error: err.message });
+    }
+  }
+});
+
 app.post('/watched', async (req, res) => {
   const { title } = req.body;
   if (!title) return res.status(400).json({ message: 'Title is required' });
