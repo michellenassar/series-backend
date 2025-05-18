@@ -48,4 +48,4 @@ jobs:
           docker pull ${{ env.DOCKER_IMAGE }}:${{ github.run_number }}
 
           # Run the Docker container
-          docker run -d --name airbnb-frontend-container -v /home/ubuntu/.env:/app/.env -p 5173:5173 ${{ secrets.DOCKER_IMAGE }}:${{ github.run_number }}
+          docker run -d --name series-backend-container -v /home/ubuntu/.env:/app/.env -p 3000:3000 ${{ secrets.DOCKER_IMAGE }}:${{ github.run_number }}
