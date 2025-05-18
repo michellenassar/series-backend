@@ -75,7 +75,6 @@ app.get("/shows", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 app.post('/addShows', async (req, res) => {
   const { Title, Poster, Genre, Seasons, Summary } = req.body;
 
