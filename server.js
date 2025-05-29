@@ -153,7 +153,7 @@ app.delete('/watched/:watchedId', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+ 
 app.get('/watchlist', async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM watchlist");
