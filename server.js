@@ -80,7 +80,7 @@ app.post('/addShows', async (req, res) => {
 
   if (!Title) {
     return res.status(400).json({ message: 'Title is required' });
-  }
+  }      
 
   try {
     await pool.query(
